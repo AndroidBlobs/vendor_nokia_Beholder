@@ -1,0 +1,5 @@
+#!/system/bin/sh
+
+r=($(cd /data/ && ./lcc -m 0 -s 0 -w -p 01 00 56 82 02 && sleep 1 && ./lcc -m 0 -s 0 -r -p 02 00 56 02))
+echo $((16#${r[1]}${r[0]}))
+exit 0

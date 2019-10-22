@@ -1,0 +1,18 @@
+on early-boot
+    setprop ro.hardware.fingerprint.unscrn true
+
+on fs
+    chown system system /dev/esfp0
+    chmod 666 /dev/esfp0
+
+on post-fs-data
+        mkdir /data/system/fingerprint 0770 system system
+
+service fqcfingerprint /vendor/bin/fqcfingerprint
+        user root
+        oneshot
+        disabled
+
+on property:debug.sys.fqcfingerprint=1
+        start fqcfingerprint
+

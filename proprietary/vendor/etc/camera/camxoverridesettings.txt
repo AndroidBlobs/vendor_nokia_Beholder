@@ -1,0 +1,1 @@
+logInfoMask=0x0

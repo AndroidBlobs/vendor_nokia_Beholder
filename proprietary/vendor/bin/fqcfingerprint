@@ -1,0 +1,14 @@
+#!/vendor/bin/sh
+
+parameter_1=$(vendor/bin/getprop egis.hardware.check)
+/vendor/bin/setprop debug.sys.fqcfpret 0
+
+fingerprint_selftest() {
+	if [ $parameter_1 == "pass" ]; then
+		/vendor/bin/setprop debug.sys.fqcfpret 1
+	else
+		/vendor/bin/setprop debug.sys.fqcfpret 0
+	fi
+}
+
+fingerprint_selftest
